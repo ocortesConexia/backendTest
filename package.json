@@ -1,0 +1,21 @@
+{
+  "name": "backend-movil-tester",
+  "version": "0.1.0",
+  "description": "Positiva Movil Backend Tester",
+  "main": "index.js",
+  "author": "Camilo Rodríguez <ccastellanos@conexia.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "test": "node index.js",
+    "test10": "npm test -- --concurrency=10",
+    "test100": "npm test -- --concurrency=100",
+    "test1000": "npm test -- --concurrency=1000",
+    "test10000": "npm test -- --concurrency=10000"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "js-yaml": "^3.11.0",
+    "supertest": "^3.1.0"
+  }
+}

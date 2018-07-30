@@ -1,0 +1,70 @@
+# Base url path
+url: https://positivamovil.conexia.com.co/positiva/api
+
+# Requests per each endpoint
+concurrency: 1000
+
+# Authenticated users
+users:
+  - 10293215
+
+  - 52289254
+
+  -  94469847
+   
+  -  29352436
+   
+  -  52525327
+   
+  -  73129986
+   
+  -  1096235487
+   
+  -  85456272
+   
+  -  1013626414
+   
+  -  53178096
+   
+  -  327732
+   
+  -  338821
+   
+  -  1061686704
+   
+  -  59707334
+   
+  -  10235487
+   
+  -  293409
+   
+  -  422457
+   
+  -  39740630
+   
+  -  45577024
+   
+  -  79837974
+   
+  -  3100894
+   
+  
+
+# Endpoints to test
+# An array containing a path or an object whihch look like this:
+#   - path: <string>
+#   - type: <string>
+endpoints:
+  #- /citas
+  - /departamento
+  - /app/version
+  - /app/version/minima
+  - /telefono/LINEA_ORO
+  - /incapacidades/temporales
+  - /incapacidades/permanentes
+  - /siniestros
+  - /solicitudes 
+  #- path: /carnet/NIT/800187567/FISCALIA
+  #  type: application/octet-stream
+  #- path: /certificados
+  #  type: application/octet-stream
