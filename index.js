@@ -39,13 +39,17 @@ const defaults = {
 }
 
 
-
+Bar.init(config.users,concurrency,config.endpoints);
 ;(async () => {
   
-  Bar.init(config.users,concurrency,config.endpoints);
+
+ 
+  
   for (const user of config.users) {
  
-   
+ 
+
+  console.log(user,defaults.password)
     const { body } = await test
       .post('/usuarios/login')
       .set('Access-Source', 'APP_MOVIL')
@@ -53,11 +57,14 @@ const defaults = {
         username: user.username || user,
         password: user.password || defaults.password
       })
-      .expect('Content-Type', /application\/json/)
+      .expect('Content-Type', /application\/json/)   //application/octet-stream
       .expect(200)
+      
+    
 
-    const token = body.data && body.data.token
   
+    const token = body.data && body.data.token
+    //console.log(token);
     if (token /* defined token */) {
       for (const endpoint of config.endpoints) {
        

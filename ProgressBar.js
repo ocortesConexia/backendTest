@@ -1,6 +1,7 @@
 const { bgWhite } = require("chalk");
 const { createWriteStream } = require('fs');
 const log = createWriteStream('./result.log');
+const beep = require('beepbeep')
 module.exports = class ProgressBar {
 	constructor() {
 		this.total;
@@ -58,13 +59,14 @@ module.exports = class ProgressBar {
             Fecha Inicio: ${this.startDate}\n
             Fecha Fin: ${endDate}\n
             Total tiempo: ${hours} hora(s), ${minutes} minuto(s), ${seconds} segundo(s)\n
-            Number of users: ${this.users.length} \n
+            Número of usuarios: ${this.users.length} \n
             Petitions per User: ${this.petitionsPerUser} \n
             Total end points: ${this.endPoints.length}\n
             End points test:`
             
         );
-        log.write(`Total of petitions: ${this.total}\nFecha Inicio: ${this.startDate}\nFecha Fin: ${endDate}\nTotal tiempo: ${hours} hora(s), ${minutes} minuto(s), ${seconds} segundo(s)\nNumber of users: ${this.users.length} \nPetitions per User: ${this.petitionsPerUser} \nTotal end points: ${this.endPoints.length}\nEnd points test:`)
+      //  log.write(`Total de peticiones: ${this.total}\nFecha Inicio: ${this.startDate}\nFecha Fin: ${endDate}\nTotal tiempo: ${hours} hora(s), ${minutes} minuto(s), ${seconds} segundo(s)\nNúmero de usuarios: ${this.users.length} \nPeticiones por Usuario: ${this.petitionsPerUser} \nPromedio de peticiones por segundo:${Math.round(this.total/(milliseconds/1000))}\nEnd point test:`)
+        log.write(`\nFecha Inicio: ${this.startDate}\nFecha Fin: ${endDate}\nTotal tiempo: ${hours} hora(s), ${minutes} minuto(s), ${seconds} segundo(s)  \nPromedio de peticiones por segundo:${Math.round(this.total/(milliseconds/1000))}\nEnd point test:`)
         
         for (const endpoint of this.endPoints) {
             const path = endpoint.path || endpoint
@@ -72,19 +74,24 @@ module.exports = class ProgressBar {
             log.write("\n"+path);
         }
         console.log("            Usuarios de la prueba:")
-        log.write("\nUsuarios de la prueba:");
+     //   log.write("\nUsuarios de la prueba:");
         for (const user of this.users) {
             
             console.log("           - "+user);
             
-            log.write("\n-"+user);
+        //    log.write("\n-"+user);
         }
             if(this.errors==0){
-                console.log("            Process finish with none Errors :)");
-                log.write("\nProcess finish with none Errors :)");
+                console.log("            Process finish with none Errors.");
+                log.write("\nProceso terminó sin Errores :)");
+                beep(3, 1000);
             }else{
-                console.log(`            Process finish with ${this.errors} Errors :´(`);
-                log.write(`\nProcess finish with ${this.errors} Errors :´(`);
+                let average=Math.round(this.errors*1000000/this.total)/1000;
+                log.write(`\nPromedio de error: ${average}%`);
+                console.log(`            Process finish with ${this.errors} Errors:`);
+                log.write(`\nProceso terminó con ${this.errors} Errores:\n`);
+                beep(3, 1000);
+               
             }
             
         }

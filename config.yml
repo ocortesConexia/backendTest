@@ -1,5 +1,5 @@
 # Base url path
-url: https://positivamovil.conexia.com.co/positiva/api
+url: https://190.60.75.91/positiva/api
 
 # Requests per each endpoint
 concurrency: 1000
@@ -55,16 +55,22 @@ users:
 #   - path: <string>
 #   - type: <string>
 endpoints:
+ 
+  #- /departamento
+  #- /app/version
+   - /sedes/4.6615598/-74.0532576/10
+  #- /app/version/minima
+  #- /telefono/LINEA_ORO
+  #- /incapacidades/temporales
+  #- /incapacidades/permanentes
+  # - /siniestros
+  # - /solicitudes 
   #- /citas
-  - /departamento
-  - /app/version
-  - /app/version/minima
-  - /telefono/LINEA_ORO
-  - /incapacidades/temporales
-  - /incapacidades/permanentes
-  - /siniestros
-  - /solicitudes 
-  #- path: /carnet/NIT/800187567/FISCALIA
-  #  type: application/octet-stream
+   #- /noticias
+  # - /punto-atencion/departamento
+   #- /punto-atencion/departamento/1/ciudad
+   #- /punto-atencion/prodecimiento
+  # - path: /carnet/NIT/800187567/FISCALIA
+  #   type: application/octet-stream
   #- path: /certificados
   #  type: application/octet-stream
